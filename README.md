@@ -13,4 +13,4 @@ This file includes:
 <Timestamp> <Downstream current rate> <upstream current rate> <SNR downstream> <SNR upstream>
 
 To call it periodically (every five minutes) just add an entry in your cronjob file like this:
-5 * * * * /home/myhome/routerStats/router_stats.py -f /home/myhome/routerStats/my_config.cfg
+*/5 * * * * /home/myhome/routerStats/router_stats.py -f /home/myhome/routerStats/my_config.cfg
