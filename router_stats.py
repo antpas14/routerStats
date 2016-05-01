@@ -97,8 +97,14 @@ def main():
 			config_file = a
 		else:
 			assert False, "unhandled option"
-	retrieve_config(config_file);
-	dump_to_file(retrieve_info())
+	result_row = [time.time(), "-", "-", "-", "-"]
+	while result_row[1] == "-": # Added this loop because sometimes retrieve_info function fail to fill result_row values 
+		time.sleep(5)
 
+		retrieve_config(config_file)
+		result_row = retrieve_info()
+
+	# When result row is filled, then dump info to the file
+	dump_to_file(result_row)
 if __name__ == "__main__":
     main()
