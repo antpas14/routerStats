@@ -45,7 +45,7 @@ var Table = React.createClass({
 
 function refreshTable(data) {
     console.log("data is", data);
-    ReactDOM.render(<Table cols={cols} data={data}/>, document.getElementById('example'));
+    ReactDOM.render(<Table cols={cols} data={data}/>, document.getElementById('table'));
 }
 
 // Open the websocket
