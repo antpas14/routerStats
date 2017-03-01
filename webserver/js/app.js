@@ -11,9 +11,15 @@ var Table = React.createClass({
             rowComponents = this.generateRows();
 
         return (
-            <table>
-                <thead> {headerComponents} </thead>
-                <tbody> {rowComponents} </tbody>
+            <table className="table table-striped">
+		<thead>
+		<tr>
+            	{headerComponents}
+		</tr>
+		</thead>
+		<tbody>
+                {rowComponents}
+		</tbody>
             </table>
         );
     },
@@ -48,6 +54,9 @@ function refreshTable(data) {
     ReactDOM.render(<Table cols={cols} data={data}/>, document.getElementById('table'));
 }
 
+// Init graph
+var myChart = echarts.init(document.getElementById('graph'));
+
 // Open the websocket
 var socket = io();
 
@@ -56,6 +65,9 @@ socket.on('json', function(data) {
     refreshTable(data.results);
 });
 
+socket.on('graph', function(data) {
+	myChart.setOption(data);
+});
 socket.on('error', console.error.bind(console));
 socket.on('message', console.log.bind(console));
 
