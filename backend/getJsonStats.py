@@ -35,7 +35,6 @@ for line in config_file:
     (name, value) = line.split("=")
     name = name.strip()
     config[name] = value
-print config
 
 # DB Configuration
 Base = declarative_base()
@@ -64,7 +63,7 @@ with open(tmp_file) as f:
 		
 		if line.startswith("["):
 			index = index + 1
-		if index < 2:
+		if index < 1:
 			if key == "interval":
 				interval = value;
 		else:
@@ -82,7 +81,7 @@ def bytes_to_bitrate(bytes, interval = 5):
 	return ((int(bytes) * 8 / 1000) / int(interval))
 
 results = []
-for x in range(2, index):
+for x in range(1, index):
 	result = {}
 	try:
 		result["address"] = IP_ADDRESS[x];
